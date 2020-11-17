@@ -11,9 +11,7 @@ const ignoreEverywhere = new Set([
 ]);
 
 const ignoreInPackages = new Set([
-  'mkdirp',
-  'semver',
-  'webpack',
+  // empty
 ]);
 
 await Promise.all((await globby(['package.json', 'packages/*/package.json'])).map(async path => {
