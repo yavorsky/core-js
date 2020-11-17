@@ -1787,18 +1787,6 @@ core-js/es|stable|features/string/replace-all
 ```js
 'Test abc test test abc test.'.replaceAll('abc', 'foo'); // -> 'Test foo test test foo test.'
 ```
-##### [`Promise.allSettled`](https://github.com/tc39/proposal-promise-allSettled)[⬆](#index)
-Module [`es.promise.all-settled`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.promise.all-settled.js)
-```js
-class Promise {
-  static allSettled(iterable: Iterable): Promise;
-}
-```
-[*CommonJS entry points:*](#commonjs-api)
-```js
-core-js/proposals/promise-all-settled
-core-js(-pure)/es|stable|features/promise/all-settled
-```
 ##### [`Promise.any`](https://github.com/tc39/proposal-promise-any)[⬆](#index)
 Modules [`es.promise.any`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.promise.any.js) and [`es.aggregate-error`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.aggregate-error.js)
 ```js
