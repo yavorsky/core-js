@@ -978,7 +978,7 @@ export const data = {
     safari: '10.0',
     rhino: '1.7.13',
   },
-  'es.string.at-alternative': {
+  'es.string.at': {
     chrome: '92',
     firefox: '90',
   },
@@ -1426,13 +1426,6 @@ export const data = {
     safari: '10.0',
     rhino: '1.7.13',
   },
-  // TODO: Remove from `core-js@4`
-  'esnext.aggregate-error': null,
-  // TODO: Remove from `core-js@4`
-  'esnext.array.at': null,
-  // TODO: Remove from `core-js@4`
-  'esnext.array.filter-out': {
-  },
   'esnext.array.filter-reject': {
   },
   'esnext.array.find-last': {
@@ -1442,12 +1435,6 @@ export const data = {
   'esnext.array.group-by': {
   },
   'esnext.array.is-template-object': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.array.last-index': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.array.last-item': {
   },
   'esnext.array.unique-by': {
   },
@@ -1485,8 +1472,6 @@ export const data = {
   },
   'esnext.composite-symbol': {
   },
-  // TODO: Remove from `core-js@4`
-  'esnext.global-this': null,
   'esnext.iterator.constructor': {
   },
   'esnext.iterator.as-indexed-pairs': {
@@ -1551,12 +1536,6 @@ export const data = {
   },
   'esnext.map.update': {
   },
-  // TODO: Remove from `core-js@4`
-  'esnext.map.update-or-insert': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.map.upsert': {
-  },
   'esnext.math.clamp': {
   },
   'esnext.math.deg-per-rad': {
@@ -1565,79 +1544,19 @@ export const data = {
   },
   'esnext.math.fscale': {
   },
-  // TODO: Remove from `core-js@4`
-  'esnext.math.iaddh': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.math.imulh': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.math.isubh': {
-  },
   'esnext.math.rad-per-deg': {
   },
   'esnext.math.radians': {
   },
   'esnext.math.scale': {
   },
-  // TODO: Remove from `core-js@4`
-  'esnext.math.seeded-prng': {
-  },
   'esnext.math.signbit': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.math.umulh': {
   },
   'esnext.number.from-string': {
   },
   'esnext.number.range': {
   },
-  // TODO: Remove from `core-js@4`
-  'esnext.object.has-own': null,
-  // TODO: Remove from `core-js@4`
-  'esnext.object.iterate-entries': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.object.iterate-keys': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.object.iterate-values': {
-  },
   'esnext.observable': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.promise.all-settled': null,
-  // TODO: Remove from `core-js@4`
-  'esnext.promise.any': null,
-  // TODO: Remove from `core-js@4`
-  'esnext.promise.try': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.reflect.define-metadata': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.reflect.delete-metadata': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.reflect.get-metadata': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.reflect.get-metadata-keys': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.reflect.get-own-metadata': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.reflect.get-own-metadata-keys': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.reflect.has-metadata': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.reflect.has-own-metadata': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.reflect.metadata': {
   },
   'esnext.set.add-all': {
   },
@@ -1675,15 +1594,8 @@ export const data = {
   },
   'esnext.set.union': {
   },
-  // TODO: Remove from `core-js@4`
-  'esnext.string.at': {
-  },
   'esnext.string.code-points': {
   },
-  // TODO: Remove from `core-js@4`
-  'esnext.string.match-all': null,
-  // TODO: Remove from `core-js@4`
-  'esnext.string.replace-all': null,
   'esnext.symbol.async-dispose': {
   },
   'esnext.symbol.dispose': {
@@ -1693,17 +1605,6 @@ export const data = {
   'esnext.symbol.metadata': {
   },
   'esnext.symbol.observable': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.symbol.pattern-match': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.symbol.replace-all': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.typed-array.at': null,
-  // TODO: Remove from `core-js@4`
-  'esnext.typed-array.filter-out': {
   },
   'esnext.typed-array.filter-reject': {
   },
@@ -1722,9 +1623,6 @@ export const data = {
   'esnext.weak-map.of': {
   },
   'esnext.weak-map.emplace': {
-  },
-  // TODO: Remove from `core-js@4`
-  'esnext.weak-map.upsert': {
   },
   'esnext.weak-set.add-all': {
   },
@@ -1789,16 +1687,5 @@ export const data = {
     safari: '14.0',
   },
 };
-
-// TODO: Remove from `core-js@4`
-data['esnext.array.at'] = data['es.array.at'];
-data['esnext.aggregate-error'] = data['es.aggregate-error'];
-data['esnext.global-this'] = data['es.global-this'];
-data['esnext.object.has-own'] = data['es.object.has-own'];
-data['esnext.promise.all-settled'] = data['es.promise.all-settled'];
-data['esnext.promise.any'] = data['es.promise.any'];
-data['esnext.string.match-all'] = data['es.string.match-all'];
-data['esnext.string.replace-all'] = data['es.string.replace-all'];
-data['esnext.typed-array.at'] = data['es.typed-array.at'];
 
 export const modules = Object.keys(data);
