@@ -1744,82 +1744,15 @@ Stage 4 proposals already marked in `core-js` as stable ECMAScript, they will be
 ```js
 core-js(-pure)/stage/4
 ```
-##### [`globalThis`](https://github.com/tc39/proposal-global)[⬆](#index)
-Module [`es.global-this`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.global-this.js).
-```js
-let globalThis: Object;
-```
-[*CommonJS entry points:*](#commonjs-api)
-```js
-core-js/proposals/global-this
-core-js(-pure)/es|stable|features/global-this
-```
-[*Examples*](https://goo.gl/LAifsc):
-```js
-globalThis.Array === Array; // => true
-```
-##### [`String#matchAll`](https://github.com/tc39/proposal-string-matchall)[⬆](#index).
-Module [`es.string.match-all`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.string.match-all.js).
 
-```js
-class String {
-  matchAll(regexp: RegExp): Iterator;
-}
-```
-[*CommonJS entry points:*](#commonjs-api)
-```js
-core-js/proposals/string-match-all
-core-js/es|stable|features/string/match-all
-```
-##### [`String#replaceAll`](https://github.com/tc39/proposal-string-replace-all)[⬆](#index)
-Module [`es.string.replace-all`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.string.replace-all.js)
-```js
-class String {
-  replaceAll(searchValue: string | RegExp, replaceString: string | (searchValue, index, this) => string): string;
-}
-```
-[*CommonJS entry points:*](#commonjs-api)
-```js
-core-js/proposals/string-replace-all
-core-js/es|stable|features/string/replace-all
-```
-[*Examples*](https://goo.gl/wUXNXN):
-```js
-'Test abc test test abc test.'.replaceAll('abc', 'foo'); // -> 'Test foo test test foo test.'
-```
-##### [`Promise.any`](https://github.com/tc39/proposal-promise-any)[⬆](#index)
-Modules [`es.promise.any`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.promise.any.js) and [`es.aggregate-error`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.aggregate-error.js)
-```js
-class AggregateError {
-  constructor(errors: Iterable, message: string): AggregateError;
-  errors: Array<any>;
-  message: string;
-}
+None.
 
-class Promise {
-  static any(promises: Iterable): Promise<any>;
-}
-```
+#### Stage 3 proposals[⬆](#index)
 [*CommonJS entry points:*](#commonjs-api)
 ```js
-core-js/proposals/promise-any
-core-js(-pure)/es|stable|features/promise/any
-core-js(-pure)/es|stable|features/aggregate-error
+core-js(-pure)/stage/3
 ```
-[*Examples*](https://goo.gl/iErvmp):
-```js
-Promise.any([
-  Promise.resolve(1),
-  Promise.reject(2),
-  Promise.resolve(3),
-]).then(console.log); // => 1
 
-Promise.any([
-  Promise.reject(1),
-  Promise.reject(2),
-  Promise.reject(3),
-]).catch(({ errors }) => console.log(errors)); // => [1, 2, 3]
-```
 ##### [Accessible `Object.prototype.hasOwnProperty`](https://github.com/tc39/proposal-accessible-object-hasownproperty)[⬆](#index)
 Module [`es.object.has-own`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.object.has-own.js).
 ```js
