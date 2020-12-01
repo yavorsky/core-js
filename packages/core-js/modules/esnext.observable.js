@@ -1,7 +1,6 @@
 'use strict';
 // https://github.com/tc39/proposal-observable
 var $ = require('../internals/export');
-var DESCRIPTORS = require('../internals/descriptors');
 var setSpecies = require('../internals/set-species');
 var aFunction = require('../internals/a-function');
 var anObject = require('../internals/an-object');
@@ -38,12 +37,7 @@ var subscriptionClosed = function (subscriptionState) {
 };
 
 var close = function (subscriptionState) {
-  var subscription = subscriptionState.facade;
-  if (!DESCRIPTORS) {
-    subscription.closed = true;
-    var subscriptionObserver = subscriptionState.subscriptionObserver;
-    if (subscriptionObserver) subscriptionObserver.closed = true;
-  } subscriptionState.observer = undefined;
+  subscriptionState.observer = undefined;
 };
 
 var Subscription = function (observer, subscriber) {
@@ -53,7 +47,6 @@ var Subscription = function (observer, subscriber) {
     subscriptionObserver: undefined
   });
   var start;
-  if (!DESCRIPTORS) this.closed = false;
   try {
     if (start = getMethod(observer.start)) start.call(observer, this);
   } catch (error) {
@@ -83,7 +76,7 @@ Subscription.prototype = redefineAll({}, {
   }
 });
 
-if (DESCRIPTORS) defineProperty(Subscription.prototype, 'closed', {
+defineProperty(Subscription.prototype, 'closed', {
   configurable: true,
   get: function () {
     return subscriptionClosed(getInternalState(this));
@@ -92,7 +85,6 @@ if (DESCRIPTORS) defineProperty(Subscription.prototype, 'closed', {
 
 var SubscriptionObserver = function (subscription) {
   setInternalState(this, { subscription: subscription });
-  if (!DESCRIPTORS) this.closed = false;
 };
 
 SubscriptionObserver.prototype = redefineAll({}, {
@@ -137,7 +129,7 @@ SubscriptionObserver.prototype = redefineAll({}, {
   }
 });
 
-if (DESCRIPTORS) defineProperty(SubscriptionObserver.prototype, 'closed', {
+defineProperty(SubscriptionObserver.prototype, 'closed', {
   configurable: true,
   get: function () {
     return subscriptionClosed(getInternalState(getInternalState(this).subscription));
