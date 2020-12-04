@@ -4,7 +4,7 @@ module.exports = function (iterator, kind, value) {
   var innerResult, innerError;
   anObject(iterator);
   try {
-    innerResult = iterator['return'];
+    innerResult = iterator.return;
     if (innerResult === undefined) {
       if (kind === 'throw') throw value;
       return value;

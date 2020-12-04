@@ -601,35 +601,6 @@ const base = {
 const es3 = {
   // disallow trailing commas in multiline object literals
   'comma-dangle': [ERROR, NEVER],
-  // encourages use of dot notation whenever possible
-  'dot-notation': [ERROR, { allowKeywords: false }],
-  // disallow ES3 reserved words as identifiers
-  // wait for resolving https://github.com/eslint/eslint/issues/15017
-  'id-denylist': [ERROR,
-    'abstract',
-    'int',
-    'short',
-    'boolean',
-    'interface',
-    'static',
-    'byte',
-    'long',
-    'char',
-    'final',
-    'native',
-    'synchronized',
-    'float',
-    'package',
-    'throws',
-    'goto',
-    'private',
-    'transient',
-    'implements',
-    'protected',
-    'volatile',
-    'double',
-    'public',
-  ],
   // disallow function or variable declarations in nested blocks
   'no-inner-declarations': ERROR,
   // require let or const instead of var
@@ -646,8 +617,6 @@ const es3 = {
   'prefer-exponentiation-operator': OFF,
   // require template literals instead of string concatenation
   'prefer-template': OFF,
-  // require or disallow use of quotes around object literal property names
-  'quote-props': [ERROR, 'as-needed', { keywords: true }],
   // require strict mode directives
   strict: OFF,
   // prefer default parameters over reassignment

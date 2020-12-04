@@ -29,21 +29,21 @@ module.exports = function (nextHandler, IS_ITERATOR) {
       var result = state.done ? undefined : nextHandler.call(state, args);
       return { done: state.done, value: result };
     },
-    'return': function (value) {
+    return: function (value) {
       var state = getInternalState(this);
       var iterator = state.iterator;
       state.done = true;
-      var $$return = iterator['return'];
+      var $$return = iterator.return;
       return { done: true, value: $$return === undefined ? value : anObject($$return.call(iterator, value)).value };
     },
-    'throw': function (value) {
+    throw: function (value) {
       var state = getInternalState(this);
       var iterator = state.iterator;
       state.done = true;
-      var $$throw = iterator['throw'];
+      var $$throw = iterator.throw;
       if ($$throw === undefined) throw value;
       return $$throw.call(iterator, value);
-    }
+    },
   });
 
   if (!IS_ITERATOR) {
