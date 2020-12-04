@@ -32,8 +32,6 @@ $({ target: 'AsyncIterator', stat: true }, {
       usingIterator = getIteratorMethod(object);
       if (usingIterator !== undefined) return new AsyncFromSyncIterator(getIterator(object, usingIterator));
     }
-    return new AsyncIteratorProxy({
-      iterator: iterator !== undefined ? iterator : object
-    });
-  }
+    return new AsyncIteratorProxy({ iterator: iterator !== undefined ? iterator : object });
+  },
 });

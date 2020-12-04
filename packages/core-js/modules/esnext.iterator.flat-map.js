@@ -45,7 +45,7 @@ $({ target: 'Iterator', proto: true, real: true }, {
       iterator: anObject(this),
       mapper: aFunction(mapper),
       innerIterator: null,
-      innerNext: null
+      innerNext: null,
     });
-  }
+  },
 });
