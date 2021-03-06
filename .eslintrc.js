@@ -1,7 +1,6 @@
 'use strict';
 const RESTRICTED_GLOBALS = require('confusing-browser-globals');
 const SUPPORTED_NODE_VERSIONS = require('core-js-builder/package').engines.node;
-const DEV_NODE_VERSIONS = '^14.15';
 const ERROR = 'error';
 const OFF = 'off';
 const ALWAYS = 'always';
@@ -760,8 +759,6 @@ const forbidModernESBuiltIns = {
 };
 
 const transpiledAndPolyfilled = {
-  // disallow accessor properties
-  'es/no-accessor-properties': ERROR,
   // disallow async functions
   'es/no-async-functions': ERROR,
   // disallow async iteration
@@ -780,22 +777,7 @@ const transpiledAndPolyfilled = {
   'es/no-weakrefs': ERROR,
 };
 
-const nodePackages = {
-  // disallow unsupported ECMAScript built-ins on the specified version
-  'node/no-unsupported-features/node-builtins': [ERROR, { version: SUPPORTED_NODE_VERSIONS }],
-  ...disable(forbidES5BuiltIns),
-  ...disable(forbidES2015BuiltIns),
-  ...disable(forbidES2016BuiltIns),
-  ...disable(forbidES2017BuiltIns),
-  'es/no-atomics': ERROR,
-  'es/no-shared-array-buffer': ERROR,
-  ...forbidES2018BuiltIns,
-  ...forbidES2019BuiltIns,
-  ...forbidES2020BuiltIns,
-  ...forbidES2021BuiltIns,
-};
-
-const nodeDev = {
+const node = {
   // disallow unsupported ECMAScript built-ins on the specified version
   'node/no-unsupported-features/node-builtins': [ERROR, { version: DEV_NODE_VERSIONS }],
   ...disable(forbidModernESBuiltIns),
@@ -1047,13 +1029,10 @@ module.exports = {
     },
     {
       files: [
+        // packages
         'packages/core-js-builder/**',
         'packages/core-js-compat/**',
-      ],
-      rules: nodePackages,
-    },
-    {
-      files: [
+        // dev
         'packages/core-js-compat/src/**',
         'scripts/**',
         'tests/observables/**',
@@ -1065,7 +1044,7 @@ module.exports = {
         '.webpack.config.js',
         'babel.config.js',
       ],
-      rules: nodeDev,
+      rules: node,
     },
     {
       files: [
