@@ -1,7 +1,7 @@
-import AsyncIterator from 'core-js-pure/features/async-iterator';
-import Promise from 'core-js-pure/features/promise';
-import assign from 'core-js-pure/features/object/assign';
-import values from 'core-js-pure/features/array/values';
+import AsyncIterator from 'core-js-pure/full/async-iterator';
+import Promise from 'core-js-pure/full/promise';
+import assign from 'core-js-pure/full/object/assign';
+import values from 'core-js-pure/full/array/values';
 
 QUnit.test('AsyncIterator.from', assert => {
   assert.expect(9);
