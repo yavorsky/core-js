@@ -1,8 +1,5 @@
-var parent = require('../../stable/typed-array');
+var parent = require('../../actual/typed-array');
 require('../../modules/es.map');
-// TODO: Remove from `core-js@4`
-require('../../modules/esnext.typed-array.at');
-require('../../modules/esnext.typed-array.filter-reject');
 require('../../modules/esnext.typed-array.find-last');
 require('../../modules/esnext.typed-array.find-last-index');
 require('../../modules/esnext.typed-array.group-by');

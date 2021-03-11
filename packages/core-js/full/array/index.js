@@ -1,8 +1,5 @@
-var parent = require('../../stable/array');
+var parent = require('../../actual/array');
 require('../../modules/es.map');
-// TODO: Remove from `core-js@4`
-require('../../modules/esnext.array.at');
-require('../../modules/esnext.array.filter-reject');
 require('../../modules/esnext.array.find-last');
 require('../../modules/esnext.array.find-last-index');
 require('../../modules/esnext.array.group-by');

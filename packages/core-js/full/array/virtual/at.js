@@ -1,6 +1,3 @@
-var parent = require('../../../stable/array/virtual/at');
-
-// TODO: Remove from `core-js@4`
-require('../../../modules/esnext.array.at');
+var parent = require('../../../actual/array/virtual/at');
 
 module.exports = parent;

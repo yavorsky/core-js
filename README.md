@@ -172,6 +172,9 @@ import "core-js/es";
 // if you want to polyfill `Set`:
 // all `Set`-related features, with ES proposals:
 import "core-js/full/set";
+// stable required for `Set` ES features, features from web standards
+// and stage 3 ES proposals:
+import "core-js/actual/set";
 // stable required for `Set` ES features and features from web standards
 // (DOM collections iterator in this case):
 import "core-js/stable/set";
@@ -179,11 +182,13 @@ import "core-js/stable/set";
 import "core-js/es/set";
 // the same without global namespace pollution:
 import Set from "core-js-pure/full/set";
+import Set from "core-js-pure/actual/set";
 import Set from "core-js-pure/stable/set";
 import Set from "core-js-pure/es/set";
 
 // if you want to polyfill just required methods:
 import "core-js/full/set/intersection";
+import "core-js/actual/array/at";
 import "core-js/stable/queue-microtask";
 import "core-js/es/array/from";
 
@@ -418,33 +423,33 @@ class Object {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/object
-core-js(-pure)/es|stable|full/object/assign
-core-js(-pure)/es|stable|full/object/is
-core-js(-pure)/es|stable|full/object/set-prototype-of
-core-js(-pure)/es|stable|full/object/get-prototype-of
-core-js(-pure)/es|stable|full/object/create
-core-js(-pure)/es|stable|full/object/define-property
-core-js(-pure)/es|stable|full/object/define-properties
-core-js(-pure)/es|stable|full/object/get-own-property-descriptor
-core-js(-pure)/es|stable|full/object/get-own-property-descriptors
-core-js(-pure)/es|stable|full/object/has-own
-core-js(-pure)/es|stable|full/object/keys
-core-js(-pure)/es|stable|full/object/values
-core-js(-pure)/es|stable|full/object/entries
-core-js(-pure)/es|stable|full/object/get-own-property-names
-core-js(-pure)/es|stable|full/object/freeze
-core-js(-pure)/es|stable|full/object/from-entries
-core-js(-pure)/es|stable|full/object/seal
-core-js(-pure)/es|stable|full/object/prevent-extensions
-core-js(-pure)/es|stable|full/object/is-frozen
-core-js(-pure)/es|stable|full/object/is-sealed
-core-js(-pure)/es|stable|full/object/is-extensible
-core-js/es|stable|full/object/to-string
-core-js(-pure)/es|stable|full/object/define-getter
-core-js(-pure)/es|stable|full/object/define-setter
-core-js(-pure)/es|stable|full/object/lookup-getter
-core-js(-pure)/es|stable|full/object/lookup-setter
+core-js(-pure)/es|stable|actual|full/object
+core-js(-pure)/es|stable|actual|full/object/assign
+core-js(-pure)/es|stable|actual|full/object/is
+core-js(-pure)/es|stable|actual|full/object/set-prototype-of
+core-js(-pure)/es|stable|actual|full/object/get-prototype-of
+core-js(-pure)/es|stable|actual|full/object/create
+core-js(-pure)/es|stable|actual|full/object/define-property
+core-js(-pure)/es|stable|actual|full/object/define-properties
+core-js(-pure)/es|stable|actual|full/object/get-own-property-descriptor
+core-js(-pure)/es|stable|actual|full/object/get-own-property-descriptors
+core-js(-pure)/es|stable|actual|full/object/has-own
+core-js(-pure)/es|stable|actual|full/object/keys
+core-js(-pure)/es|stable|actual|full/object/values
+core-js(-pure)/es|stable|actual|full/object/entries
+core-js(-pure)/es|stable|actual|full/object/get-own-property-names
+core-js(-pure)/es|stable|actual|full/object/freeze
+core-js(-pure)/es|stable|actual|full/object/from-entries
+core-js(-pure)/es|stable|actual|full/object/seal
+core-js(-pure)/es|stable|actual|full/object/prevent-extensions
+core-js(-pure)/es|stable|actual|full/object/is-frozen
+core-js(-pure)/es|stable|actual|full/object/is-sealed
+core-js(-pure)/es|stable|actual|full/object/is-extensible
+core-js/es|stable|actual|full/object/to-string
+core-js(-pure)/es|stable|actual|full/object/define-getter
+core-js(-pure)/es|stable|actual|full/object/define-setter
+core-js(-pure)/es|stable|actual|full/object/lookup-getter
+core-js(-pure)/es|stable|actual|full/object/lookup-setter
 ```
 [*Examples*](http://es6.zloirock.ru/#var%20foo%20%3D%20%7Bq%3A%201%2C%20w%3A%202%7D%0A%20%20%2C%20bar%20%3D%20%7Be%3A%203%2C%20r%3A%204%7D%0A%20%20%2C%20baz%20%3D%20%7Bt%3A%205%2C%20y%3A%206%7D%3B%0AObject.assign(foo%2C%20bar%2C%20baz)%3B%0Alog(foo)%3B%20%2F%2F%20%3D%3E%20%7Bq%3A%201%2C%20w%3A%202%2C%20e%3A%203%2C%20r%3A%204%2C%20t%3A%205%2C%20y%3A%206%7D%0A%0Alog(Object.is(NaN%2C%20NaN))%3B%20%2F%2F%20%3D%3E%20true%0Alog(Object.is(0%2C%20-0))%3B%20%20%20%20%2F%2F%20%3D%3E%20false%0Alog(Object.is(42%2C%2042))%3B%20%20%20%2F%2F%20%3D%3E%20true%0Alog(Object.is(42%2C%20'42'))%3B%20%2F%2F%20%3D%3E%20false%0A%0Afunction%20Parent()%7B%7D%0Afunction%20Child()%7B%7D%0AObject.setPrototypeOf(Child.prototype%2C%20Parent.prototype)%3B%0Alog(new%20Child%20instanceof%20Child)%3B%20%20%2F%2F%20%3D%3E%20true%0Alog(new%20Child%20instanceof%20Parent)%3B%20%2F%2F%20%3D%3E%20true%0A%0Avar%20O%20%3D%20%7B%7D%3B%0AO%5BSymbol.toStringTag%5D%20%3D%20'Foo'%3B%0Alog(''%20%2B%20O)%3B%20%2F%2F%20%3D%3E%20'%5Bobject%20Foo%5D'%0A%0Alog(Object.keys('qwe'))%3B%20%2F%2F%20%3D%3E%20%5B'0'%2C%20'1'%2C%20'2'%5D%0Alog(Object.getPrototypeOf('qwe')%20%3D%3D%3D%20String.prototype)%3B%20%2F%2F%20%3D%3E%20true%0A%0Alog(Object.values(%7Ba%3A%201%2C%20b%3A%202%2C%20c%3A%203%7D))%3B%20%20%2F%2F%20%3D%3E%20%5B1%2C%202%2C%203%5D%0Alog(Object.entries(%7Ba%3A%201%2C%20b%3A%202%2C%20c%3A%203%7D))%3B%20%2F%2F%20%3D%3E%20%5B%5B'a'%2C%201%5D%2C%20%5B'b'%2C%202%5D%2C%20%5B'c'%2C%203%5D%5D%0A%0Afor(let%20%5Bkey%2C%20value%5D%20of%20Object.entries(%7Ba%3A%201%2C%20b%3A%202%2C%20c%3A%203%7D))%7B%0A%20%20log(key)%3B%20%20%20%2F%2F%20%3D%3E%20'a'%2C%20'b'%2C%20'c'%0A%20%20log(value)%3B%20%2F%2F%20%3D%3E%201%2C%202%2C%203%0A%7D%0A%0A%2F%2F%20Shallow%20object%20cloning%20with%20prototype%20and%20descriptors%3A%0A%2F%2F%20let%20copy%20%3D%20Object.create(Object.getPrototypeOf(object)%2C%20Object.getOwnPropertyDescriptors(object))%3B%0A%2F%2F%20Mixin%3A%0A%2F%2F%20Object.defineProperties(target%2C%20Object.getOwnPropertyDescriptors(source))%3B%0A%0Aconst%20map%20%3D%20new%20Map(%5B%5B'a'%2C%201%5D%2C%20%5B'b'%2C%202%5D%5D)%3B%0Alog(Object.fromEntries(map))%3B%20%2F%2F%20%3D%3E%20%7B%20a%3A%201%2C%20b%3A%202%20%7D%0A%0Aclass%20Unit%20%7B%0A%20%20constructor(id)%20%7B%0A%20%20%20%20this.id%20%3D%20id%3B%0A%20%20%7D%0A%20%20toString()%20%7B%0A%20%20%20%20return%20%60unit%24%7B%20this.id%20%7D%60%3B%0A%20%20%7D%0A%7D%0A%0Aconst%20units%20%3D%20new%20Set(%5Bnew%20Unit(101)%2C%20new%20Unit(102)%5D)%3B%0A%0Alog(Object.fromEntries(units.entries()))%3B%20%2F%2F%20%3D%3E%20%7B%20unit101%3A%20Unit%20%7B%20id%3A%20101%20%7D%2C%20unit102%3A%20Unit%20%7B%20id%3A%20102%20%7D%20%7D%0A%0Alog(Object.hasOwn(%7B%20foo%3A%2042%20%7D%2C%20'foo'))%3B%20%2F%2F%20%3D%3E%20true%0Alog(Object.hasOwn(%7B%20foo%3A%2042%20%7D%2C%20'bar'))%3B%20%2F%2F%20%3D%3E%20false%0Alog(Object.hasOwn(%7B%7D%2C%20'toString'))%3B%20%20%20%20%20%2F%2F%20%3D%3E%20false):
 ```js
@@ -516,9 +521,9 @@ class Function {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js/es|stable|full/function
-core-js/es|stable|full/function/name
-core-js/es|stable|full/function/has-instance
+core-js/es|stable|actual|full/function
+core-js/es|stable|actual|full/function/name
+core-js/es|stable|actual|full/function/has-instance
 ```
 [*Example*](http://goo.gl/zqu3Wp):
 ```js
@@ -567,64 +572,64 @@ class Arguments {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/array
-core-js(-pure)/es|stable|full/array/from
-core-js(-pure)/es|stable|full/array/of
-core-js(-pure)/es|stable|full/array/is-array
-core-js(-pure)/es|stable|full/array/at
-core-js(-pure)/es|stable|full/array/concat
-core-js(-pure)/es|stable|full/array/entries
-core-js(-pure)/es|stable|full/array/every
-core-js(-pure)/es|stable|full/array/copy-within
-core-js(-pure)/es|stable|full/array/fill
-core-js(-pure)/es|stable|full/array/filter
-core-js(-pure)/es|stable|full/array/find
-core-js(-pure)/es|stable|full/array/find-index
-core-js(-pure)/es|stable|full/array/flat
-core-js(-pure)/es|stable|full/array/flat-map
-core-js(-pure)/es|stable|full/array/for-each
-core-js(-pure)/es|stable|full/array/includes
-core-js(-pure)/es|stable|full/array/index-of
-core-js(-pure)/es|stable|full/array/iterator
-core-js(-pure)/es|stable|full/array/join
-core-js(-pure)/es|stable|full/array/keys
-core-js(-pure)/es|stable|full/array/last-index-of
-core-js(-pure)/es|stable|full/array/map
-core-js(-pure)/es|stable|full/array/reduce
-core-js(-pure)/es|stable|full/array/reduce-right
-core-js(-pure)/es|stable|full/array/reverse
-core-js(-pure)/es|stable|full/array/slice
-core-js(-pure)/es|stable|full/array/splice
-core-js(-pure)/es|stable|full/array/some
-core-js(-pure)/es|stable|full/array/sort
-core-js(-pure)/es|stable|full/array/values
-core-js(-pure)/es|stable|full/array/virtual/at
-core-js(-pure)/es|stable|full/array/virtual/concat
-core-js(-pure)/es|stable|full/array/virtual/copy-within
-core-js(-pure)/es|stable|full/array/virtual/entries
-core-js(-pure)/es|stable|full/array/virtual/every
-core-js(-pure)/es|stable|full/array/virtual/fill
-core-js(-pure)/es|stable|full/array/virtual/filter
-core-js(-pure)/es|stable|full/array/virtual/find
-core-js(-pure)/es|stable|full/array/virtual/find-index
-core-js(-pure)/es|stable|full/array/virtual/flat
-core-js(-pure)/es|stable|full/array/virtual/flat-map
-core-js(-pure)/es|stable|full/array/virtual/for-each
-core-js(-pure)/es|stable|full/array/virtual/includes
-core-js(-pure)/es|stable|full/array/virtual/index-of
-core-js(-pure)/es|stable|full/array/virtual/iterator
-core-js(-pure)/es|stable|full/array/virtual/join
-core-js(-pure)/es|stable|full/array/virtual/keys
-core-js(-pure)/es|stable|full/array/virtual/last-index-of
-core-js(-pure)/es|stable|full/array/virtual/map
-core-js(-pure)/es|stable|full/array/virtual/reduce
-core-js(-pure)/es|stable|full/array/virtual/reduce-right
-core-js(-pure)/es|stable|full/array/virtual/reverse
-core-js(-pure)/es|stable|full/array/virtual/slice
-core-js(-pure)/es|stable|full/array/virtual/some
-core-js(-pure)/es|stable|full/array/virtual/sort
-core-js(-pure)/es|stable|full/array/virtual/splice
-core-js(-pure)/es|stable|full/array/virtual/values
+core-js(-pure)/es|stable|actual|full/array
+core-js(-pure)/es|stable|actual|full/array/from
+core-js(-pure)/es|stable|actual|full/array/of
+core-js(-pure)/es|stable|actual|full/array/is-array
+core-js(-pure)/es|stable|actual|full/array/at
+core-js(-pure)/es|stable|actual|full/array/concat
+core-js(-pure)/es|stable|actual|full/array/entries
+core-js(-pure)/es|stable|actual|full/array/every
+core-js(-pure)/es|stable|actual|full/array/copy-within
+core-js(-pure)/es|stable|actual|full/array/fill
+core-js(-pure)/es|stable|actual|full/array/filter
+core-js(-pure)/es|stable|actual|full/array/find
+core-js(-pure)/es|stable|actual|full/array/find-index
+core-js(-pure)/es|stable|actual|full/array/flat
+core-js(-pure)/es|stable|actual|full/array/flat-map
+core-js(-pure)/es|stable|actual|full/array/for-each
+core-js(-pure)/es|stable|actual|full/array/includes
+core-js(-pure)/es|stable|actual|full/array/index-of
+core-js(-pure)/es|stable|actual|full/array/iterator
+core-js(-pure)/es|stable|actual|full/array/join
+core-js(-pure)/es|stable|actual|full/array/keys
+core-js(-pure)/es|stable|actual|full/array/last-index-of
+core-js(-pure)/es|stable|actual|full/array/map
+core-js(-pure)/es|stable|actual|full/array/reduce
+core-js(-pure)/es|stable|actual|full/array/reduce-right
+core-js(-pure)/es|stable|actual|full/array/reverse
+core-js(-pure)/es|stable|actual|full/array/slice
+core-js(-pure)/es|stable|actual|full/array/splice
+core-js(-pure)/es|stable|actual|full/array/some
+core-js(-pure)/es|stable|actual|full/array/sort
+core-js(-pure)/es|stable|actual|full/array/values
+core-js(-pure)/es|stable|actual|full/array/virtual/at
+core-js(-pure)/es|stable|actual|full/array/virtual/concat
+core-js(-pure)/es|stable|actual|full/array/virtual/copy-within
+core-js(-pure)/es|stable|actual|full/array/virtual/entries
+core-js(-pure)/es|stable|actual|full/array/virtual/every
+core-js(-pure)/es|stable|actual|full/array/virtual/fill
+core-js(-pure)/es|stable|actual|full/array/virtual/filter
+core-js(-pure)/es|stable|actual|full/array/virtual/find
+core-js(-pure)/es|stable|actual|full/array/virtual/find-index
+core-js(-pure)/es|stable|actual|full/array/virtual/flat
+core-js(-pure)/es|stable|actual|full/array/virtual/flat-map
+core-js(-pure)/es|stable|actual|full/array/virtual/for-each
+core-js(-pure)/es|stable|actual|full/array/virtual/includes
+core-js(-pure)/es|stable|actual|full/array/virtual/index-of
+core-js(-pure)/es|stable|actual|full/array/virtual/iterator
+core-js(-pure)/es|stable|actual|full/array/virtual/join
+core-js(-pure)/es|stable|actual|full/array/virtual/keys
+core-js(-pure)/es|stable|actual|full/array/virtual/last-index-of
+core-js(-pure)/es|stable|actual|full/array/virtual/map
+core-js(-pure)/es|stable|actual|full/array/virtual/reduce
+core-js(-pure)/es|stable|actual|full/array/virtual/reduce-right
+core-js(-pure)/es|stable|actual|full/array/virtual/reverse
+core-js(-pure)/es|stable|actual|full/array/virtual/slice
+core-js(-pure)/es|stable|actual|full/array/virtual/some
+core-js(-pure)/es|stable|actual|full/array/virtual/sort
+core-js(-pure)/es|stable|actual|full/array/virtual/splice
+core-js(-pure)/es|stable|actual|full/array/virtual/values
 ```
 [*Examples*](http://es6.zloirock.ru/#log(Array.from(new%20Set(%5B1%2C%202%2C%203%2C%202%2C%201%5D)))%3B%20%20%20%20%20%20%2F%2F%20%3D%3E%20%5B1%2C%202%2C%203%5D%0Alog(Array.from(%7B0%3A%201%2C%201%3A%202%2C%202%3A%203%2C%20length%3A%203%7D))%3B%20%2F%2F%20%3D%3E%20%5B1%2C%202%2C%203%5D%0Alog(Array.from('123'%2C%20Number))%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20%5B1%2C%202%2C%203%5D%0Alog(Array.from('123'%2C%20function(it)%7B%0A%20%20return%20it%20*%20it%3B%0A%7D))%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20%5B1%2C%204%2C%209%5D%0A%0Alog(Array.of(1))%3B%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20%5B1%5D%0Alog(Array.of(1%2C%202%2C%203))%3B%20%2F%2F%20%3D%3E%20%5B1%2C%202%2C%203%5D%0A%0Avar%20array%20%3D%20%5B'a'%2C%20'b'%2C%20'c'%5D%3B%0A%0Afor(var%20val%20of%20array)log(val)%3B%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'a'%2C%20'b'%2C%20'c'%0Afor(var%20val%20of%20array.values())log(val)%3B%20%2F%2F%20%3D%3E%20'a'%2C%20'b'%2C%20'c'%0Afor(var%20key%20of%20array.keys())log(key)%3B%20%20%20%2F%2F%20%3D%3E%200%2C%201%2C%202%0Afor(var%20%5Bkey%2C%20val%5D%20of%20array.entries())%7B%0A%20%20log(key)%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%200%2C%201%2C%202%0A%20%20log(val)%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'a'%2C%20'b'%2C%20'c'%0A%7D%0A%0Afunction%20isOdd(val)%7B%0A%20%20return%20val%20%25%202%3B%0A%7D%0Alog(%5B4%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%5D.find(isOdd))%3B%20%20%20%20%20%20%2F%2F%20%3D%3E%2015%0Alog(%5B4%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%5D.findIndex(isOdd))%3B%20%2F%2F%20%3D%3E%202%0Alog(%5B4%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%5D.find(isNaN))%3B%20%20%20%20%20%20%2F%2F%20%3D%3E%20undefined%0Alog(%5B4%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%5D.findIndex(isNaN))%3B%20%2F%2F%20%3D%3E%20-1%0A%0Alog(Array(5).fill(42))%3B%20%2F%2F%20%3D%3E%20%5B42%2C%2042%2C%2042%2C%2042%2C%2042%5D%0A%0Alog(%5B1%2C%202%2C%203%2C%204%2C%205%5D.copyWithin(0%2C%203))%3B%20%2F%2F%20%3D%3E%20%5B4%2C%205%2C%203%2C%204%2C%205%5D%0A%0Alog(%5B1%2C%202%2C%203%5D.includes(2))%3B%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20true%0Alog(%5B1%2C%202%2C%203%5D.includes(4))%3B%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20false%0Alog(%5B1%2C%202%2C%203%5D.includes(2%2C%202))%3B%20%20%20%20%20%2F%2F%20%3D%3E%20false%0A%0Alog(%5BNaN%5D.indexOf(NaN))%3B%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20-1%0Alog(%5BNaN%5D.includes(NaN))%3B%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20true%0Alog(Array(1).indexOf(undefined))%3B%20%20%2F%2F%20%3D%3E%20-1%0Alog(Array(1).includes(undefined))%3B%20%2F%2F%20%3D%3E%20true%0A%0Alog(%5B%7B%20a%3A%201%2C%20b%3A%202%20%7D%2C%20%7B%20a%3A%203%2C%20b%3A%204%20%7D%2C%20%7B%20a%3A%205%2C%20b%3A%206%20%7D%5D.flatMap(it%20%3D%3E%20%5Bit.a%2C%20it.b%5D))%3B%20%2F%2F%20%3D%3E%20%5B1%2C%202%2C%203%2C%204%2C%205%2C%206%5D%0A%0Alog(%5B1%2C%202%2C%203%5D.at(1))%3B%20%20%2F%2F%20%3D%3E%202%0Alog(%5B1%2C%202%2C%203%5D.at(-1))%3B%20%2F%2F%20%3D%3E%203):
 ```js
@@ -747,52 +752,52 @@ function unescape(string: string): string;
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/string
-core-js(-pure)/es|stable|full/string/from-code-point
-core-js(-pure)/es|stable|full/string/raw
-core-js/es|stable|full/string/match
-core-js/es|stable|full/string/replace
-core-js/es|stable|full/string/search
-core-js/es|stable|full/string/split
-core-js(-pure)/es|stable|full/string(/virtual)/at
-core-js(-pure)/es|stable|full/string(/virtual)/code-point-at
-core-js(-pure)/es|stable|full/string(/virtual)/ends-with
-core-js(-pure)/es|stable|full/string(/virtual)/includes
-core-js(-pure)/es|stable|full/string(/virtual)/starts-with
-core-js(-pure)/es|stable|full/string(/virtual)/match-all
-core-js(-pure)/es|stable|full/string(/virtual)/pad-start
-core-js(-pure)/es|stable|full/string(/virtual)/pad-end
-core-js(-pure)/es|stable|full/string(/virtual)/repeat
-core-js(-pure)/es|stable|full/string(/virtual)/replace-all
-core-js(-pure)/es|stable|full/string(/virtual)/trim
-core-js(-pure)/es|stable|full/string(/virtual)/trim-start
-core-js(-pure)/es|stable|full/string(/virtual)/trim-end
-core-js(-pure)/es|stable|full/string(/virtual)/trim-left
-core-js(-pure)/es|stable|full/string(/virtual)/trim-right
-core-js(-pure)/es|stable|full/string(/virtual)/anchor
-core-js(-pure)/es|stable|full/string(/virtual)/big
-core-js(-pure)/es|stable|full/string(/virtual)/blink
-core-js(-pure)/es|stable|full/string(/virtual)/bold
-core-js(-pure)/es|stable|full/string(/virtual)/fixed
-core-js(-pure)/es|stable|full/string(/virtual)/fontcolor
-core-js(-pure)/es|stable|full/string(/virtual)/fontsize
-core-js(-pure)/es|stable|full/string(/virtual)(/virtual)/italics
-core-js(-pure)/es|stable|full/string(/virtual)/link
-core-js(-pure)/es|stable|full/string(/virtual)/small
-core-js(-pure)/es|stable|full/string(/virtual)/strike
-core-js(-pure)/es|stable|full/string(/virtual)/sub
-core-js(-pure)/es|stable|full/string(/virtual)/substr
-core-js(-pure)/es|stable|full/string(/virtual)/sup
-core-js(-pure)/es|stable|full/string(/virtual)/iterator
-core-js/es|stable|full/regexp
-core-js/es|stable|full/regexp/constructor
-core-js/es|stable|full/regexp/dot-all
-core-js(-pure)/es|stable|full/regexp/flags
-core-js/es|stable|full/regexp/sticky
-core-js/es|stable|full/regexp/test
-core-js/es|stable|full/regexp/to-string
-core-js/es|stable|full/escape
-core-js/es|stable|full/unescape
+core-js(-pure)/es|stable|actual|full/string
+core-js(-pure)/es|stable|actual|full/string/from-code-point
+core-js(-pure)/es|stable|actual|full/string/raw
+core-js/es|stable|actual|full/string/match
+core-js/es|stable|actual|full/string/replace
+core-js/es|stable|actual|full/string/search
+core-js/es|stable|actual|full/string/split
+core-js(-pure)/es|stable|actual|full/string(/virtual)/at
+core-js(-pure)/es|stable|actual|full/string(/virtual)/code-point-at
+core-js(-pure)/es|stable|actual|full/string(/virtual)/ends-with
+core-js(-pure)/es|stable|actual|full/string(/virtual)/includes
+core-js(-pure)/es|stable|actual|full/string(/virtual)/starts-with
+core-js(-pure)/es|stable|actual|full/string(/virtual)/match-all
+core-js(-pure)/es|stable|actual|full/string(/virtual)/pad-start
+core-js(-pure)/es|stable|actual|full/string(/virtual)/pad-end
+core-js(-pure)/es|stable|actual|full/string(/virtual)/repeat
+core-js(-pure)/es|stable|actual|full/string(/virtual)/replace-all
+core-js(-pure)/es|stable|actual|full/string(/virtual)/trim
+core-js(-pure)/es|stable|actual|full/string(/virtual)/trim-start
+core-js(-pure)/es|stable|actual|full/string(/virtual)/trim-end
+core-js(-pure)/es|stable|actual|full/string(/virtual)/trim-left
+core-js(-pure)/es|stable|actual|full/string(/virtual)/trim-right
+core-js(-pure)/es|stable|actual|full/string(/virtual)/anchor
+core-js(-pure)/es|stable|actual|full/string(/virtual)/big
+core-js(-pure)/es|stable|actual|full/string(/virtual)/blink
+core-js(-pure)/es|stable|actual|full/string(/virtual)/bold
+core-js(-pure)/es|stable|actual|full/string(/virtual)/fixed
+core-js(-pure)/es|stable|actual|full/string(/virtual)/fontcolor
+core-js(-pure)/es|stable|actual|full/string(/virtual)/fontsize
+core-js(-pure)/es|stable|actual|full/string(/virtual)(/virtual)/italics
+core-js(-pure)/es|stable|actual|full/string(/virtual)/link
+core-js(-pure)/es|stable|actual|full/string(/virtual)/small
+core-js(-pure)/es|stable|actual|full/string(/virtual)/strike
+core-js(-pure)/es|stable|actual|full/string(/virtual)/sub
+core-js(-pure)/es|stable|actual|full/string(/virtual)/substr
+core-js(-pure)/es|stable|actual|full/string(/virtual)/sup
+core-js(-pure)/es|stable|actual|full/string(/virtual)/iterator
+core-js/es|stable|actual|full/regexp
+core-js/es|stable|actual|full/regexp/constructor
+core-js/es|stable|actual|full/regexp/dot-all
+core-js(-pure)/es|stable|actual|full/regexp/flags
+core-js/es|stable|actual|full/regexp/sticky
+core-js/es|stable|actual|full/regexp/test
+core-js/es|stable|actual|full/regexp/to-string
+core-js/es|stable|actual|full/escape
+core-js/es|stable|actual|full/unescape
 ```
 [*Examples*](http://es6.zloirock.ru/#for(var%20val%20of%20'a%F0%A0%AE%B7b')%7B%0A%20%20log(val)%3B%20%2F%2F%20%3D%3E%20'a'%2C%20'%F0%A0%AE%B7'%2C%20'b'%0A%7D%0A%0Alog('foobarbaz'.includes('bar'))%3B%20%20%20%20%20%20%2F%2F%20%3D%3E%20true%0Alog('foobarbaz'.includes('bar'%2C%204))%3B%20%20%20%2F%2F%20%3D%3E%20false%0Alog('foobarbaz'.startsWith('foo'))%3B%20%20%20%20%2F%2F%20%3D%3E%20true%0Alog('foobarbaz'.startsWith('bar'%2C%203))%3B%20%2F%2F%20%3D%3E%20true%0Alog('foobarbaz'.endsWith('baz'))%3B%20%20%20%20%20%20%2F%2F%20%3D%3E%20true%0Alog('foobarbaz'.endsWith('bar'%2C%206))%3B%20%20%20%2F%2F%20%3D%3E%20true%0A%0Alog('string'.repeat(3))%3B%20%2F%2F%20%3D%3E%20'stringstringstring'%0A%0Alog('hello'.padStart(10))%3B%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'%20%20%20%20%20hello'%0Alog('hello'.padStart(10%2C%20'1234'))%3B%20%2F%2F%20%3D%3E%20'12341hello'%0Alog('hello'.padEnd(10))%3B%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'hello%20%20%20%20%20'%0Alog('hello'.padEnd(10%2C%20'1234'))%3B%20%20%20%2F%2F%20%3D%3E%20'hello12341'%0A%0Alog('%F0%A0%AE%B7'.codePointAt(0))%3B%20%2F%2F%20%3D%3E%20134071%0A%0Avar%20name%20%3D%20'Bob'%3B%0Alog(String.raw%60Hi%5Cn%24%7Bname%7D!%60)%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'Hi%5C%5CnBob!'%20(ES6%20template%20string%20syntax)%0Alog(String.raw(%7B%20raw%3A%20'test'%20%7D%2C%200%2C%201%2C%202))%3B%20%2F%2F%20%3D%3E%20%2F%2F%20't0e1s2t'%0A%0Alog('foo'.bold())%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'%3Cb%3Efoo%3C%2Fb%3E'%0Alog('bar'.anchor('a%22b'))%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'%3Ca%20name%3D%22a%26quot%3Bb%22%3Ebar%3C%2Fa%3E'%0Alog('baz'.link('http%3A%2F%2Fexample.com'))%3B%20%2F%2F%20%3D%3E%20'%3Ca%20href%3D%22http%3A%2F%2Fexample.com%22%3Ebaz%3C%2Fa%3E'%0A%0Alog(RegExp('.'%2C%20's').test('%5Cn'))%3B%20%2F%2F%20%3D%3E%20true%0Alog(RegExp('.'%2C%20's').dotAll)%3B%20%20%20%20%20%2F%2F%20%3D%3E%20true%0A%0Alog(RegExp('foo%3A(%3F%3Cfoo%3E%5C%5Cw%2B)%2Cbar%3A(%3F%3Cbar%3E%5C%5Cw%2B)').exec('foo%3Aabc%2Cbar%3Adef').groups.bar)%3B%20%2F%2F%20%3D%3E%20'def'%0A%0Alog('foo%3Aabc%2Cbar%3Adef'.replace(RegExp('foo%3A(%3F%3Cfoo%3E%5C%5Cw%2B)%2Cbar%3A(%3F%3Cbar%3E%5C%5Cw%2B)')%2C%20'%24%3Cbar%3E%2C%24%3Cfoo%3E'))%3B%20%2F%2F%20%3D%3E%20'def%2Cabc'%0A%0Alog(RegExp(%2F.%2Fg%2C%20'm'))%3B%20%2F%2F%20%3D%3E%20%2F.%2Fm%0A%0Alog(%2Ffoo%2F.flags)%3B%20%20%20%20%2F%2F%20%3D%3E%20''%0Alog(%2Ffoo%2Fgim.flags)%3B%20%2F%2F%20%3D%3E%20'gim'%0A%0Alog(RegExp('foo'%2C%20'y').sticky)%3B%20%2F%2F%20%3D%3E%20true%0A%0Aconst%20text%20%3D%20'First%20line%5CnSecond%20line'%3B%0Aconst%20regex%20%3D%20RegExp('(%5C%5CS%2B)%20line%5C%5Cn%3F'%2C%20'y')%3B%0A%0Alog(regex.exec(text)%5B1%5D)%3B%20%2F%2F%20%3D%3E%20'First'%0Alog(regex.exec(text)%5B1%5D)%3B%20%2F%2F%20%3D%3E%20'Second'%0Alog(regex.exec(text))%3B%20%20%20%20%2F%2F%20%3D%3E%20null%0A%0Alog('foo'.match(%7B%5BSymbol.match%5D%3A%20_%20%3D%3E%201%7D))%3B%20%20%20%20%20%2F%2F%20%3D%3E%201%0Alog('foo'.replace(%7B%5BSymbol.replace%5D%3A%20_%20%3D%3E%202%7D))%3B%20%2F%2F%20%3D%3E%202%0Alog('foo'.search(%7B%5BSymbol.search%5D%3A%20_%20%3D%3E%203%7D))%3B%20%20%20%2F%2F%20%3D%3E%203%0Alog('foo'.split(%7B%5BSymbol.split%5D%3A%20_%20%3D%3E%204%7D))%3B%20%20%20%20%20%2F%2F%20%3D%3E%204%0A%0Alog(RegExp.prototype.toString.call(%7Bsource%3A%20'foo'%2C%20flags%3A%20'bar'%7D))%3B%0A%0Alog('%20%20%20hello%20%20%20'.trimLeft())%3B%20%20%2F%2F%20%3D%3E%20'hello%20%20%20'%0Alog('%20%20%20hello%20%20%20'.trimRight())%3B%20%2F%2F%20%3D%3E%20'%20%20%20hello'%0Alog('%20%20%20hello%20%20%20'.trimStart())%3B%20%2F%2F%20%3D%3E%20'hello%20%20%20'%0Alog('%20%20%20hello%20%20%20'.trimEnd())%3B%20%20%20%2F%2F%20%3D%3E%20'%20%20%20hello'%0A%0Afor%20(let%20%5B_%2C%20d%2C%20D%5D%20of%20'1111a2b3cccc'.matchAll(%2F(%5Cd)(%5CD)%2Fg))%20%7B%0A%20%20log(d%2C%20D)%3B%20%2F%2F%20%3D%3E%201%20a%2C%202%20b%2C%203%20c%0A%7D%0A%0Alog('Test%20abc%20test%20test%20abc%20test.'.replaceAll('abc'%2C%20'foo'))%3B%20%2F%2F%20-%3E%20'Test%20foo%20test%20test%20foo%20test.')%0A%0Alog('abc'.at(1))%3B%20%20%2F%2F%20%3D%3E%20'b'%0Alog('abc'.at(-1))%3B%20%2F%2F%20%3D%3E%20'c'):
 ```js
@@ -895,21 +900,21 @@ function parseInt(string: string, radix?: number = 10): number;
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/number
-core-js/es|stable|full/number/constructor
-core-js(-pure)/es|stable|full/number/is-finite
-core-js(-pure)/es|stable|full/number/is-nan
-core-js(-pure)/es|stable|full/number/is-integer
-core-js(-pure)/es|stable|full/number/is-safe-integer
-core-js(-pure)/es|stable|full/number/parse-float
-core-js(-pure)/es|stable|full/number/parse-int
-core-js(-pure)/es|stable|full/number/epsilon
-core-js(-pure)/es|stable|full/number/max-safe-integer
-core-js(-pure)/es|stable|full/number/min-safe-integer
-core-js(-pure)/es|stable|full/number/to-fixed
-core-js(-pure)/es|stable|full/number/to-precision
-core-js(-pure)/es|stable|full/parse-float
-core-js(-pure)/es|stable|full/parse-int
+core-js(-pure)/es|stable|actual|full/number
+core-js/es|stable|actual|full/number/constructor
+core-js(-pure)/es|stable|actual|full/number/is-finite
+core-js(-pure)/es|stable|actual|full/number/is-nan
+core-js(-pure)/es|stable|actual|full/number/is-integer
+core-js(-pure)/es|stable|actual|full/number/is-safe-integer
+core-js(-pure)/es|stable|actual|full/number/parse-float
+core-js(-pure)/es|stable|actual|full/number/parse-int
+core-js(-pure)/es|stable|actual|full/number/epsilon
+core-js(-pure)/es|stable|actual|full/number/max-safe-integer
+core-js(-pure)/es|stable|actual|full/number/min-safe-integer
+core-js(-pure)/es|stable|actual|full/number/to-fixed
+core-js(-pure)/es|stable|actual|full/number/to-precision
+core-js(-pure)/es|stable|actual|full/parse-float
+core-js(-pure)/es|stable|actual|full/parse-int
 ```
 #### ECMAScript: Math[⬆](#index)
 Modules [`es.math.acosh`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.acosh.js), [`es.math.asinh`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.asinh.js), [`es.math.atanh`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.atanh.js), [`es.math.cbrt`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.cbrt.js), [`es.math.clz32`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.clz32.js), [`es.math.cosh`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.cosh.js), [`es.math.expm1`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.expm1.js), [`es.math.fround`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.fround.js), [`es.math.hypot`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.hypot.js), [`es.math.imul`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.imul.js), [`es.math.log10`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.log10.js), [`es.math.log1p`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.log1p.js), [`es.math.log2`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.log2.js), [`es.math.sign`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.sign.js), [`es.math.sinh`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.sinh.js), [`es.math.tanh`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.tanh.js), [`es.math.trunc`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.math.trunc.js).
@@ -936,24 +941,24 @@ namespace Math {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/math
-core-js(-pure)/es|stable|full/math/acosh
-core-js(-pure)/es|stable|full/math/asinh
-core-js(-pure)/es|stable|full/math/atanh
-core-js(-pure)/es|stable|full/math/cbrt
-core-js(-pure)/es|stable|full/math/clz32
-core-js(-pure)/es|stable|full/math/cosh
-core-js(-pure)/es|stable|full/math/expm1
-core-js(-pure)/es|stable|full/math/fround
-core-js(-pure)/es|stable|full/math/hypot
-core-js(-pure)/es|stable|full/math/imul
-core-js(-pure)/es|stable|full/math/log1p
-core-js(-pure)/es|stable|full/math/log10
-core-js(-pure)/es|stable|full/math/log2
-core-js(-pure)/es|stable|full/math/sign
-core-js(-pure)/es|stable|full/math/sinh
-core-js(-pure)/es|stable|full/math/tanh
-core-js(-pure)/es|stable|full/math/trunc
+core-js(-pure)/es|stable|actual|full/math
+core-js(-pure)/es|stable|actual|full/math/acosh
+core-js(-pure)/es|stable|actual|full/math/asinh
+core-js(-pure)/es|stable|actual|full/math/atanh
+core-js(-pure)/es|stable|actual|full/math/cbrt
+core-js(-pure)/es|stable|actual|full/math/clz32
+core-js(-pure)/es|stable|actual|full/math/cosh
+core-js(-pure)/es|stable|actual|full/math/expm1
+core-js(-pure)/es|stable|actual|full/math/fround
+core-js(-pure)/es|stable|actual|full/math/hypot
+core-js(-pure)/es|stable|actual|full/math/imul
+core-js(-pure)/es|stable|actual|full/math/log1p
+core-js(-pure)/es|stable|actual|full/math/log10
+core-js(-pure)/es|stable|actual|full/math/log2
+core-js(-pure)/es|stable|actual|full/math/sign
+core-js(-pure)/es|stable|actual|full/math/sinh
+core-js(-pure)/es|stable|actual|full/math/tanh
+core-js(-pure)/es|stable|actual|full/math/trunc
 ```
 #### ECMAScript: Date[⬆](#index)
 Modules [`es.date.to-string`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.date.to-string.js), [`es.date.to-iso-string`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.date.to-iso-string.js), [`es.date.to-json`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.date.to-json.js) and [`es.date.to-primitive`](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.date.to-primitive.js).
@@ -972,14 +977,14 @@ class Date {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js/es|stable|full/date
-core-js/es|stable|full/date/to-string
-core-js(-pure)/es|stable|full/date/get-year
-core-js(-pure)/es|stable|full/date/set-year
-core-js(-pure)/es|stable|full/date/to-gmt-string
-core-js(-pure)/es|stable|full/date/to-iso-string
-core-js(-pure)/es|stable|full/date/to-json
-core-js(-pure)/es|stable|full/date/to-primitive
+core-js/es|stable|actual|full/date
+core-js/es|stable|actual|full/date/to-string
+core-js(-pure)/es|stable|actual|full/date/get-year
+core-js(-pure)/es|stable|actual|full/date/set-year
+core-js(-pure)/es|stable|actual|full/date/to-gmt-string
+core-js(-pure)/es|stable|actual|full/date/to-iso-string
+core-js(-pure)/es|stable|actual|full/date/to-json
+core-js(-pure)/es|stable|actual|full/date/to-primitive
 ```
 [*Example*](http://goo.gl/haeHLR):
 ```js
@@ -1009,17 +1014,17 @@ class Promise {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/aggregate-error
-core-js(-pure)/es|stable|full/promise
-core-js(-pure)/es|stable|full/promise/constructor
-core-js(-pure)/es|stable|full/promise/all
-core-js(-pure)/es|stable|full/promise/all-settled
-core-js(-pure)/es|stable|full/promise/any
-core-js(-pure)/es|stable|full/promise/catch
-core-js(-pure)/es|stable|full/promise/finally
-core-js(-pure)/es|stable|full/promise/race
-core-js(-pure)/es|stable|full/promise/reject
-core-js(-pure)/es|stable|full/promise/resolve
+core-js(-pure)/es|stable|actual|full/aggregate-error
+core-js(-pure)/es|stable|actual|full/promise
+core-js(-pure)/es|stable|actual|full/promise/constructor
+core-js(-pure)/es|stable|actual|full/promise/all
+core-js(-pure)/es|stable|actual|full/promise/all-settled
+core-js(-pure)/es|stable|actual|full/promise/any
+core-js(-pure)/es|stable|actual|full/promise/catch
+core-js(-pure)/es|stable|actual|full/promise/finally
+core-js(-pure)/es|stable|actual|full/promise/race
+core-js(-pure)/es|stable|actual|full/promise/reject
+core-js(-pure)/es|stable|actual|full/promise/resolve
 ```
 Basic [*example*](http://goo.gl/vGrtUC):
 ```js
@@ -1198,24 +1203,24 @@ class Object {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/symbol
-core-js(-pure)/es|stable|full/symbol/async-iterator
-core-js/es|stable|full/symbol/description
-core-js(-pure)/es|stable|full/symbol/has-instance
-core-js(-pure)/es|stable|full/symbol/is-concat-spreadable
-core-js(-pure)/es|stable|full/symbol/iterator
-core-js(-pure)/es|stable|full/symbol/match
-core-js(-pure)/es|stable|full/symbol/replace
-core-js(-pure)/es|stable|full/symbol/search
-core-js(-pure)/es|stable|full/symbol/species
-core-js(-pure)/es|stable|full/symbol/split
-core-js(-pure)/es|stable|full/symbol/to-primitive
-core-js(-pure)/es|stable|full/symbol/to-string-tag
-core-js(-pure)/es|stable|full/symbol/unscopables
-core-js(-pure)/es|stable|full/symbol/for
-core-js(-pure)/es|stable|full/symbol/key-for
-core-js(-pure)/es|stable|full/object/get-own-property-symbols
-core-js(-pure)/es|stable|full/math/to-string-tag
+core-js(-pure)/es|stable|actual|full/symbol
+core-js(-pure)/es|stable|actual|full/symbol/async-iterator
+core-js/es|stable|actual|full/symbol/description
+core-js(-pure)/es|stable|actual|full/symbol/has-instance
+core-js(-pure)/es|stable|actual|full/symbol/is-concat-spreadable
+core-js(-pure)/es|stable|actual|full/symbol/iterator
+core-js(-pure)/es|stable|actual|full/symbol/match
+core-js(-pure)/es|stable|actual|full/symbol/replace
+core-js(-pure)/es|stable|actual|full/symbol/search
+core-js(-pure)/es|stable|actual|full/symbol/species
+core-js(-pure)/es|stable|actual|full/symbol/split
+core-js(-pure)/es|stable|actual|full/symbol/to-primitive
+core-js(-pure)/es|stable|actual|full/symbol/to-string-tag
+core-js(-pure)/es|stable|actual|full/symbol/unscopables
+core-js(-pure)/es|stable|actual|full/symbol/for
+core-js(-pure)/es|stable|actual|full/symbol/key-for
+core-js(-pure)/es|stable|actual|full/object/get-own-property-symbols
+core-js(-pure)/es|stable|actual|full/math/to-string-tag
 ```
 [*Basic example*](http://goo.gl/BbvWFc):
 ```js
@@ -1304,7 +1309,7 @@ class Map {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/map
+core-js(-pure)/es|stable|actual|full/map
 ```
 [*Examples*](http://goo.gl/GWR7NI):
 ```js
@@ -1358,7 +1363,7 @@ class Set {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/set
+core-js(-pure)/es|stable|actual|full/set
 ```
 [*Examples*](http://goo.gl/bmhLwg):
 ```js
@@ -1397,7 +1402,7 @@ class WeakMap {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/weak-map
+core-js(-pure)/es|stable|actual|full/weak-map
 ```
 [*Examples*](http://goo.gl/SILXyw):
 ```js
@@ -1442,7 +1447,7 @@ class WeakSet {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/weak-set
+core-js(-pure)/es|stable|actual|full/weak-set
 ```
 [*Examples*](http://goo.gl/TdFbEx):
 ```js
@@ -1552,50 +1557,50 @@ class %TypedArray% {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js/es|stable|full/array-buffer
-core-js/es|stable|full/array-buffer/constructor
-core-js/es|stable|full/array-buffer/is-view
-core-js/es|stable|full/array-buffer/slice
-core-js/es|stable|full/data-view
-core-js/es|stable|full/typed-array
-core-js/es|stable|full/typed-array/int8-array
-core-js/es|stable|full/typed-array/uint8-array
-core-js/es|stable|full/typed-array/uint8-clamped-array
-core-js/es|stable|full/typed-array/int16-array
-core-js/es|stable|full/typed-array/uint16-array
-core-js/es|stable|full/typed-array/int32-array
-core-js/es|stable|full/typed-array/uint32-array
-core-js/es|stable|full/typed-array/float32-array
-core-js/es|stable|full/typed-array/float64-array
-core-js/es|stable|full/typed-array/at
-core-js/es|stable|full/typed-array/copy-within
-core-js/es|stable|full/typed-array/entries
-core-js/es|stable|full/typed-array/every
-core-js/es|stable|full/typed-array/fill
-core-js/es|stable|full/typed-array/filter
-core-js/es|stable|full/typed-array/find
-core-js/es|stable|full/typed-array/find-index
-core-js/es|stable|full/typed-array/for-each
-core-js/es|stable|full/typed-array/from
-core-js/es|stable|full/typed-array/includes
-core-js/es|stable|full/typed-array/index-of
-core-js/es|stable|full/typed-array/iterator
-core-js/es|stable|full/typed-array/join
-core-js/es|stable|full/typed-array/keys
-core-js/es|stable|full/typed-array/last-index-of
-core-js/es|stable|full/typed-array/map
-core-js/es|stable|full/typed-array/of
-core-js/es|stable|full/typed-array/reduce
-core-js/es|stable|full/typed-array/reduce-right
-core-js/es|stable|full/typed-array/reverse
-core-js/es|stable|full/typed-array/set
-core-js/es|stable|full/typed-array/slice
-core-js/es|stable|full/typed-array/some
-core-js/es|stable|full/typed-array/sort
-core-js/es|stable|full/typed-array/subarray
-core-js/es|stable|full/typed-array/to-locale-string
-core-js/es|stable|full/typed-array/to-string
-core-js/es|stable|full/typed-array/values
+core-js/es|stable|actual|full/array-buffer
+core-js/es|stable|actual|full/array-buffer/constructor
+core-js/es|stable|actual|full/array-buffer/is-view
+core-js/es|stable|actual|full/array-buffer/slice
+core-js/es|stable|actual|full/data-view
+core-js/es|stable|actual|full/typed-array
+core-js/es|stable|actual|full/typed-array/int8-array
+core-js/es|stable|actual|full/typed-array/uint8-array
+core-js/es|stable|actual|full/typed-array/uint8-clamped-array
+core-js/es|stable|actual|full/typed-array/int16-array
+core-js/es|stable|actual|full/typed-array/uint16-array
+core-js/es|stable|actual|full/typed-array/int32-array
+core-js/es|stable|actual|full/typed-array/uint32-array
+core-js/es|stable|actual|full/typed-array/float32-array
+core-js/es|stable|actual|full/typed-array/float64-array
+core-js/es|stable|actual|full/typed-array/at
+core-js/es|stable|actual|full/typed-array/copy-within
+core-js/es|stable|actual|full/typed-array/entries
+core-js/es|stable|actual|full/typed-array/every
+core-js/es|stable|actual|full/typed-array/fill
+core-js/es|stable|actual|full/typed-array/filter
+core-js/es|stable|actual|full/typed-array/find
+core-js/es|stable|actual|full/typed-array/find-index
+core-js/es|stable|actual|full/typed-array/for-each
+core-js/es|stable|actual|full/typed-array/from
+core-js/es|stable|actual|full/typed-array/includes
+core-js/es|stable|actual|full/typed-array/index-of
+core-js/es|stable|actual|full/typed-array/iterator
+core-js/es|stable|actual|full/typed-array/join
+core-js/es|stable|actual|full/typed-array/keys
+core-js/es|stable|actual|full/typed-array/last-index-of
+core-js/es|stable|actual|full/typed-array/map
+core-js/es|stable|actual|full/typed-array/of
+core-js/es|stable|actual|full/typed-array/reduce
+core-js/es|stable|actual|full/typed-array/reduce-right
+core-js/es|stable|actual|full/typed-array/reverse
+core-js/es|stable|actual|full/typed-array/set
+core-js/es|stable|actual|full/typed-array/slice
+core-js/es|stable|actual|full/typed-array/some
+core-js/es|stable|actual|full/typed-array/sort
+core-js/es|stable|actual|full/typed-array/subarray
+core-js/es|stable|actual|full/typed-array/to-locale-string
+core-js/es|stable|actual|full/typed-array/to-string
+core-js/es|stable|actual|full/typed-array/values
 ```
 [*Examples*](http://es6.zloirock.ru/#log(new%20Int32Array(4))%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20%5B0%2C%200%2C%200%2C%200%5D%0Alog(new%20Uint8ClampedArray(%5B1%2C%202%2C%203%2C%20666%5D))%3B%20%20%20%20%20%20%2F%2F%20%3D%3E%20%5B1%2C%202%2C%203%2C%20255%5D%0Alog(new%20Float32Array(new%20Set(%5B1%2C%202%2C%203%2C%202%2C%201%5D)))%3B%20%2F%2F%20%3D%3E%20%5B1%2C%202%2C%203%5D%0A%0Avar%20buffer%20%3D%20new%20ArrayBuffer(8)%3B%0Avar%20view%20%20%20%3D%20new%20DataView(buffer)%3B%0Aview.setFloat64(0%2C%20123.456%2C%20true)%3B%0Alog(new%20Uint8Array(buffer.slice(4)))%3B%20%2F%2F%20%3D%3E%20%5B47%2C%20221%2C%2094%2C%2064%5D%0A%0Alog(Int8Array.of(1%2C%201.5%2C%205.7%2C%20745))%3B%20%20%20%20%20%20%2F%2F%20%3D%3E%20%5B1%2C%201%2C%205%2C%20-23%5D%0Alog(Uint8Array.from(%5B1%2C%201.5%2C%205.7%2C%20745%5D))%3B%20%2F%2F%20%3D%3E%20%5B1%2C%201%2C%205%2C%20233%5D%0A%0Avar%20typed%20%3D%20new%20Uint8Array(%5B1%2C%202%2C%203%5D)%3B%0A%0Avar%20a%20%3D%20typed.slice(1)%3B%20%20%20%20%2F%2F%20%3D%3E%20%5B2%2C%203%5D%0Alog(a)%3B%0Alog(typed.buffer%20%3D%3D%3D%20a.buffer)%3B%20%2F%2F%20%3D%3E%20false%0Avar%20b%20%3D%20typed.subarray(1)%3B%20%2F%2F%20%3D%3E%20%5B2%2C%203%5D%0Alog(b)%3B%0Alog(typed.buffer%20%3D%3D%3D%20b.buffer)%3B%20%2F%2F%20%3D%3E%20true%0A%0Alog(typed.filter(it%20%3D%3E%20it%20%25%202))%3B%20%2F%2F%20%3D%3E%20%5B1%2C%203%5D%0Alog(typed.map(it%20%3D%3E%20it%20*%201.5))%3B%20%20%2F%2F%20%3D%3E%20%5B1%2C%203%2C%204%5D%0A%0Afor(var%20val%20of%20typed)log(val)%3B%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%201%2C%202%2C%203%0Afor(var%20val%20of%20typed.values())log(val)%3B%20%2F%2F%20%3D%3E%201%2C%202%2C%203%0Afor(var%20key%20of%20typed.keys())log(key)%3B%20%20%20%2F%2F%20%3D%3E%200%2C%201%2C%202%0Afor(var%20%5Bkey%2C%20val%5D%20of%20typed.entries())%7B%0A%20%20log(key)%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%200%2C%201%2C%202%0A%20%20log(val)%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%3D%3E%201%2C%202%2C%203%0A%7D%0A%0Alog(new%20Int32Array(%5B1%2C%202%2C%203%5D).at(1))%3B%20%20%2F%2F%20%3D%3E%202%0Alog(new%20Int32Array(%5B1%2C%202%2C%203%5D).at(-1))%3B%20%2F%2F%20%3D%3E%203):
 ```js
@@ -1657,20 +1662,20 @@ namespace Reflect {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```
-core-js(-pure)/es|stable|full/reflect
-core-js(-pure)/es|stable|full/reflect/apply
-core-js(-pure)/es|stable|full/reflect/construct
-core-js(-pure)/es|stable|full/reflect/define-property
-core-js(-pure)/es|stable|full/reflect/delete-property
-core-js(-pure)/es|stable|full/reflect/get
-core-js(-pure)/es|stable|full/reflect/get-own-property-descriptor
-core-js(-pure)/es|stable|full/reflect/get-prototype-of
-core-js(-pure)/es|stable|full/reflect/has
-core-js(-pure)/es|stable|full/reflect/is-extensible
-core-js(-pure)/es|stable|full/reflect/own-keys
-core-js(-pure)/es|stable|full/reflect/prevent-extensions
-core-js(-pure)/es|stable|full/reflect/set
-core-js(-pure)/es|stable|full/reflect/set-prototype-of
+core-js(-pure)/es|stable|actual|full/reflect
+core-js(-pure)/es|stable|actual|full/reflect/apply
+core-js(-pure)/es|stable|actual|full/reflect/construct
+core-js(-pure)/es|stable|actual|full/reflect/define-property
+core-js(-pure)/es|stable|actual|full/reflect/delete-property
+core-js(-pure)/es|stable|actual|full/reflect/get
+core-js(-pure)/es|stable|actual|full/reflect/get-own-property-descriptor
+core-js(-pure)/es|stable|actual|full/reflect/get-prototype-of
+core-js(-pure)/es|stable|actual|full/reflect/has
+core-js(-pure)/es|stable|actual|full/reflect/is-extensible
+core-js(-pure)/es|stable|actual|full/reflect/own-keys
+core-js(-pure)/es|stable|actual|full/reflect/prevent-extensions
+core-js(-pure)/es|stable|actual|full/reflect/set
+core-js(-pure)/es|stable|actual|full/reflect/set-prototype-of
 ```
 [*Examples*](http://goo.gl/gVT0cH):
 ```js
@@ -1699,8 +1704,8 @@ namespace JSON {
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```js
-core-js(-pure)/es|stable|full/json/stringify
-core-js(-pure)/es|stable|full/json/to-string-tag
+core-js(-pure)/es|stable|actual|full/json/stringify
+core-js(-pure)/es|stable|actual|full/json/to-string-tag
 ```
 [*Examples*](http://es6.zloirock.ru/#log(JSON.stringify(%7B%20'%F0%A0%AE%B7'%3A%20%5B'%5CuDF06%5CuD834'%5D%20%7D))%3B%20%2F%2F%20%3D%3E%20'%7B%22%F0%A0%AE%B7%22%3A%5B%22%5C%5Cudf06%5C%5Cud834%22%5D%7D'):
 ```js
@@ -1714,7 +1719,7 @@ let globalThis: Object;
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```js
-core-js(-pure)/es|stable|full/global-this
+core-js(-pure)/es|stable|actual|full/global-this
 ```
 [*Examples*](https://goo.gl/LAifsc):
 ```js
@@ -2429,8 +2434,8 @@ function setInterval(callback: any, time: any, ...args: Array<mixed>): number;
 ```js
 core-js(-pure)/web/set-interval
 core-js(-pure)/web/set-timeout
-core-js(-pure)/stable|full/set-interval
-core-js(-pure)/stable|full/set-timeout
+core-js(-pure)/stable|actual|full/set-interval
+core-js(-pure)/stable|actual|full/set-timeout
 ```
 ```js
 // Before:
@@ -2446,8 +2451,8 @@ function clearImmediate(id: number): void;
 ```
 [*CommonJS entry points:*](#commonjs-api)
 ```js
-core-js(-pure)/stable|full|web/set-immediate
-core-js(-pure)/stable|full|web/clear-immediate
+core-js(-pure)/stable|actual|full|web/set-immediate
+core-js(-pure)/stable|actual|full|web/clear-immediate
 ```
 [*Examples*](http://goo.gl/6nXGrx):
 ```js
@@ -2468,7 +2473,7 @@ function queueMicrotask(fn: Function): void;
 [*CommonJS entry points:*](#commonjs-api)
 ```js
 core-js/web/queue-microtask
-core-js(-pure)/stable|full/queue-microtask
+core-js(-pure)/stable|actual|full/queue-microtask
 ```
 [*Examples*](https://goo.gl/nsW8P9):
 ```js
@@ -2516,9 +2521,9 @@ class URLSearchParams {
 [*CommonJS entry points:*](#commonjs-api)
 ```js
 core-js/proposals/url
-core-js(-pure)/stable|full|web/url
-core-js/stable|full|web/url/to-json
-core-js(-pure)/stable|full|web/url-search-params
+core-js(-pure)/stable|actual|full|web/url
+core-js/stable|actual|full|web/url/to-json
+core-js(-pure)/stable|actual|full|web/url-search-params
 ```
 [*Examples*](http://es6.zloirock.ru/#const%20url%20%3D%20new%20URL('http%3A%2F%2Flogin%3Apassword%40example.com%3A8080%2Ffoo%2Fbar%3Fa%3D1%26b%3D2%26a%3D3%23fragment')%3B%0A%0Alog(url.href)%3B%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'http%3A%2F%2Flogin%3Apassword%40example.com%3A8080%2Ffoo%2Fbar%3Fa%3D1%26b%3D2%26a%3D3%23fragment'%0Alog(url.origin)%3B%20%20%20%20%20%2F%2F%20%3D%3E%20'http%3A%2F%2Fexample.com%3A8080'%0Alog(url.protocol)%3B%20%20%20%2F%2F%20%3D%3E%20'http%3A'%0Alog(url.username)%3B%20%20%20%2F%2F%20%3D%3E%20'login'%0Alog(url.password)%3B%20%20%20%2F%2F%20%3D%3E%20'password'%0Alog(url.host)%3B%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'example.com%3A8080'%0Alog(url.hostname)%3B%20%20%20%2F%2F%20%3D%3E%20'example.com'%0Alog(url.port)%3B%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'8080'%0Alog(url.pathname)%3B%20%20%20%2F%2F%20%3D%3E%20'%2Ffoo%2Fbar'%0Alog(url.search)%3B%20%20%20%20%20%2F%2F%20%3D%3E%20'%3Fa%3D1%26b%3D2%26a%3D3'%0Alog(url.hash)%3B%20%20%20%20%20%20%20%2F%2F%20%3D%3E%20'%23fragment'%0Alog(url.toJSON())%3B%20%20%20%2F%2F%20%3D%3E%20'http%3A%2F%2Flogin%3Apassword%40example.com%3A8080%2Ffoo%2Fbar%3Fa%3D1%26b%3D2%26a%3D3%23fragment'%0Alog(url.toString())%3B%20%2F%2F%20%3D%3E%20'http%3A%2F%2Flogin%3Apassword%40example.com%3A8080%2Ffoo%2Fbar%3Fa%3D1%26b%3D2%26a%3D3%23fragment'%0A%0Afor%20(let%20%5Bkey%2C%20value%5D%20of%20url.searchParams)%20%7B%0A%20%20log(key)%3B%20%20%20%2F%2F%20%3D%3E%20'a'%2C%20'b'%2C%20'a'%0A%20%20log(value)%3B%20%2F%2F%20%3D%3E%20'1'%2C%20'2'%2C%20'3'%0A%7D%0A%0Aurl.pathname%20%3D%20''%3B%0Aurl.searchParams.append('c'%2C%204)%3B%0A%0Alog(url.search)%3B%20%2F%2F%20%3D%3E%20'%3Fa%3D1%26b%3D2%26a%3D3%26c%3D4'%0Alog(url.href)%3B%20%20%20%2F%2F%20%3D%3E%20'http%3A%2F%2Flogin%3Apassword%40example.com%3A8080%2F%3Fa%3D1%26b%3D2%26a%3D3%26c%3D4%23fragment'%0A%0Aconst%20params%20%3D%20new%20URLSearchParams('%3Fa%3D1%26b%3D2%26a%3D3')%3B%0A%0Aparams.append('c'%2C%204)%3B%0Aparams.append('a'%2C%202)%3B%0Aparams.sort()%3B%0A%0Afor%20(let%20%5Bkey%2C%20value%5D%20of%20params)%20%7B%0A%20%20log(key)%3B%20%20%20%2F%2F%20%3D%3E%20'a'%2C%20'a'%2C%20'a'%2C%20'b'%2C%20'c'%0A%20%20log(value)%3B%20%2F%2F%20%3D%3E%20'1'%2C%20'3'%2C%20'2'%2C%20'2'%2C%20'4'%0A%7D%0A%0Alog(params.toString())%3B%20%2F%2F%20%3D%3E%20'a%3D1%26a%3D3%26a%3D2%26b%3D2%26c%3D4'):
 ```js
