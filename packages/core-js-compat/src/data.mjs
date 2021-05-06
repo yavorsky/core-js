@@ -1544,7 +1544,11 @@ export const data = {
   },
   'esnext.number.range': {
   },
-  'esnext.observable': {
+  'esnext.observable.constructor': {
+  },
+  'esnext.observable.from': {
+  },
+  'esnext.observable.of': {
   },
   'esnext.set.add-all': {
   },

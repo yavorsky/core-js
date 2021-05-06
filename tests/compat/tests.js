@@ -1385,8 +1385,14 @@ GLOBAL.tests = {
   'esnext.number.range': function () {
     return Number.range;
   },
-  'esnext.observable': function () {
+  'esnext.observable.constructor': function () {
     return Observable;
+  },
+  'esnext.observable.from': function () {
+    return Observable.from;
+  },
+  'esnext.observable.of': function () {
+    return Observable.of;
   },
   'esnext.set.add-all': function () {
     return Set.prototype.addAll;
