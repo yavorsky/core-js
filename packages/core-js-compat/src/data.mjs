@@ -407,7 +407,7 @@ export const data = {
     firefox: '51',
     safari: '10.0',
   },
-  'es.map': {
+  'es.map.constructor': {
     chrome: '51',
     edge: '15',
     firefox: '53',
@@ -965,7 +965,7 @@ export const data = {
     firefox: '46',
     safari: '10.0',
   },
-  'es.set': {
+  'es.set.constructor': {
     chrome: '51',
     edge: '15',
     firefox: '53',
@@ -1416,14 +1416,14 @@ export const data = {
     safari: '1',
     rhino: '1.7.13',
   },
-  'es.weak-map': {
+  'es.weak-map.constructor': {
     chrome: '51',
     edge: '15',
     firefox: '53',
     safari: '10.0',
     rhino: '1.7.13',
   },
-  'es.weak-set': {
+  'es.weak-set.constructor': {
     chrome: '51',
     edge: '15',
     firefox: '53',
