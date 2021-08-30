@@ -1,7 +1,6 @@
 'use strict';
 var path = require('../internals/path');
 var anObject = require('../internals/an-object');
-var create = require('../internals/object-create');
 var getMethod = require('../internals/get-method');
 var redefineAll = require('../internals/redefine-all');
 var InternalStateModule = require('../internals/internal-state');
@@ -22,11 +21,11 @@ var asyncFromSyncIteratorContinuation = function (result, resolve, reject) {
 var AsyncFromSyncIterator = function AsyncIterator(iterator) {
   setInternalState(this, {
     iterator: anObject(iterator),
-    next: iterator.next
+    next: iterator.next,
   });
 };
 
-AsyncFromSyncIterator.prototype = redefineAll(create(path.AsyncIterator.prototype), {
+AsyncFromSyncIterator.prototype = redefineAll(Object.create(path.AsyncIterator.prototype), {
   next: function next(arg) {
     var state = getInternalState(this);
     var hasArg = !!arguments.length;
@@ -35,7 +34,7 @@ AsyncFromSyncIterator.prototype = redefineAll(create(path.AsyncIterator.prototyp
       asyncFromSyncIteratorContinuation(result, resolve, reject);
     });
   },
-  'return': function (arg) {
+  return: function (arg) {
     var iterator = getInternalState(this).iterator;
     var hasArg = !!arguments.length;
     return new Promise(function (resolve, reject) {
@@ -45,7 +44,7 @@ AsyncFromSyncIterator.prototype = redefineAll(create(path.AsyncIterator.prototyp
       asyncFromSyncIteratorContinuation(result, resolve, reject);
     });
   },
-  'throw': function (arg) {
+  throw: function (arg) {
     var iterator = getInternalState(this).iterator;
     var hasArg = !!arguments.length;
     return new Promise(function (resolve, reject) {

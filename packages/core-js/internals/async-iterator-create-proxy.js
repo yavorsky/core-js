@@ -34,7 +34,7 @@ module.exports = function (nextHandler, IS_ITERATOR) {
         resolve(state.done ? { done: true, value: undefined } : anObject(nextHandler.call(state, Promise, args)));
       });
     },
-    'return': function (value) {
+    return: function (value) {
       var that = this;
       return new Promise(function (resolve, reject) {
         var state = getInternalState(that);
@@ -48,7 +48,7 @@ module.exports = function (nextHandler, IS_ITERATOR) {
         }, reject);
       });
     },
-    'throw': function (value) {
+    throw: function (value) {
       var that = this;
       return new Promise(function (resolve, reject) {
         var state = getInternalState(that);
