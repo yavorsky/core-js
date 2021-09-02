@@ -301,12 +301,6 @@ for (PATH of ['core-js-pure', 'core-js']) {
     ok(instanceAt([]).call([1, 2, 3], 2) === 3);
     ok(instanceAt('').call('123', 2) === '3');
 
-    const instanceBind = load(NS, 'instance/bind');
-    ok(typeof instanceBind === 'function');
-    ok(instanceBind({}) === undefined);
-    ok(typeof instanceBind(it => it) === 'function');
-    ok(instanceBind(it => it).call(it => it, 1, 2)() === 2);
-
     const instanceCodePointAt = load(NS, 'instance/code-point-at');
     ok(typeof instanceCodePointAt === 'function');
     ok(instanceCodePointAt({}) === undefined);
@@ -715,7 +709,6 @@ for (PATH of ['core-js-pure', 'core-js']) {
     ok(instanceUniqueBy([]).call([1, 2, 3, 2, 1]).length === 3);
   }
 
-  load('proposals/accessible-object-hasownproperty');
   load('proposals/array-filtering');
   load('proposals/array-find-from-last');
   load('proposals/array-grouping');
@@ -733,7 +726,6 @@ for (PATH of ['core-js-pure', 'core-js']) {
   load('proposals/number-range');
   load('proposals/observable');
   load('proposals/pattern-matching');
-  load('proposals/relative-indexing-method');
   load('proposals/set-methods');
   load('proposals/string-code-points');
   load('proposals/using-statement');

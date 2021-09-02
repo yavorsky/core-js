@@ -1,4 +1,3 @@
-require('../../../modules/esnext.array.at');
-var entryVirtual = require('../../../internals/entry-virtual');
+var parent = require('../../../stable/array/virtual/at');
 
-module.exports = entryVirtual('Array').at;
+module.exports = parent;

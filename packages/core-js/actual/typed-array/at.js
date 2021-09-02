@@ -1,1 +1,1 @@
-require('../../modules/esnext.typed-array.at');
+require('../../modules/es.typed-array.at');

@@ -1,9 +1,10 @@
 ##### Unreleased
 - Dropped support engines without basic ES5 support (like IE8-)
-- `String.prototype.at` from [relative indexing method proposal](https://github.com/tc39/proposal-relative-indexing-method) replaced `String.prototype.at` from [obsolete proposal with code points semantic](https://github.com/mathiasbynens/String.prototype.at)
 - Removed proposals:
   - Finished and moved to stable ES:
+    - [`.at`](https://github.com/tc39/proposal-relative-indexing-method/)
     - [`globalThis`](https://github.com/tc39/proposal-global)
+    - [`Object.hasOwn`](https://github.com/tc39/proposal-accessible-object-hasownproperty)
     - [`Promise.allSettled`](https://github.com/tc39/proposal-promise-allSettled)
     - [`Promise.any` + `AggregateError`](https://github.com/tc39/proposal-promise-any)
     - [`String.prototype.matchAll`](https://github.com/tc39/proposal-string-matchall)
@@ -21,8 +22,6 @@
   - [`Reflect` metadata](https://github.com/rbuckton/reflect-metadata) didn't become an official proposal, should be replaced by `@@metadata`-based logic
 - Removed modules:
   - `es.array.is-array` (required for ES3 only)
-  - `es.array.last-index` (suspended)
-  - `es.array.last-item` (suspended)
   - `es.date.now` (required for ES3 only)
   - `es.date.to-string` (required for IE8- only)
   - `es.function.bind` (required for ES3 only)
@@ -30,6 +29,9 @@
   - `es.object.define-property` (required for ES3 only)
   - `es.object.define-properties` (required for ES3 only)
   - `esnext.aggregate-error` (moved to stable ES)
+  - `esnext.array.at` (moved to stable ES)
+  - `esnext.array.last-index` (suspended)
+  - `esnext.array.last-item` (suspended)
   - `esnext.global-this` (moved to stable ES)
   - `esnext.map.update-or-insert` (obsolete)
   - `esnext.map.upsert` (obsolete)
@@ -38,6 +40,7 @@
   - `esnext.math.isubh` (withdrawn)
   - `esnext.math.seeded-prng` (changing of the API, waiting for the spec text)
   - `esnext.math.umulh` (withdrawn)
+  - `esnext.object.has-own` (moved to stable ES)
   - `esnext.object.iterate-entries` (withdrawn)
   - `esnext.object.iterate-keys` (withdrawn)
   - `esnext.object.iterate-values` (withdrawn)
@@ -53,11 +56,13 @@
   - `esnext.reflect.has-metadata` (didn't become an official proposal, should be replaced by `@@metadata`-based logic)
   - `esnext.reflect.has-own-metadata` (didn't become an official proposal, should be replaced by `@@metadata`-based logic)
   - `esnext.reflect.metadata` (didn't become an official proposal, should be replaced by `@@metadata`-based logic)
-  - `esnext.string.at-alternative` (replaces `esnext.string.at` from the obsolete proposal)
+  - `esnext.string.at` (obsolete)
+  - `esnext.string.at-alternative` (moved to stable ES)
   - `esnext.string.match-all` (moved to stable ES)
   - `esnext.string.replace-all` (moved to stable ES)
   - `esnext.symbol.pattern-match` (is not a part of actual proposal, replaced by `esnext.symbol.matcher`)
   - `esnext.symbol.replace-all` (obsolete)
+  - `esnext.typed-array.at` (moved to stable ES)
   - `esnext.weak-map.upsert` (obsolete)
 - Removed features:
   - `Array.prototype.lastIndex` (suspended)
@@ -120,6 +125,7 @@
     - `web.set-interval`
     - `web.set-timeout`
 - Modules renamed:
+  - `es.string.at-alternative` -> `es.string.at`
   - `es.aggregate-error` -> `es.aggregate-error.constructor`
   - `es.data-view` -> `es.data-view.constructor`
   - `es.{ map, set, weak-map, weak-set }` -> `es.{ map, set, weak-map, weak-set }.constructor`

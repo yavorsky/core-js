@@ -1,4 +1,3 @@
-require('../../../modules/esnext.string.at');
-var entryVirtual = require('../../../internals/entry-virtual');
+var parent = require('../../../stable/string/virtual/at');
 
-module.exports = entryVirtual('String').at;
+module.exports = parent;
