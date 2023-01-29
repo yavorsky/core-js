@@ -1,5 +1,18 @@
 ## Changelog
 ##### Unreleased
+- [Async explicit resource management proposal](https://github.com/tc39/proposal-async-explicit-resource-management):
+  - Built-ins:
+    - `Symbol.asyncDispose`
+    - `AsyncDisposableStack`
+      - `AsyncDisposableStack.prototype.disposeAsync`
+      - `AsyncDisposableStack.prototype.use`
+      - `AsyncDisposableStack.prototype.adopt`
+      - `AsyncDisposableStack.prototype.defer`
+      - `AsyncDisposableStack.prototype.move`
+      - `AsyncDisposableStack.prototype[@@asyncDispose]`
+    - `AsyncIterator.prototype[@@asyncDispose]`
+  - Moved to Stage 3, January 2023 TC39 meeting
+  - Added `/actual/` namespace entries, disabled forced replacement
 - Fixed Safari `String.prototype.toWellFormed` `ToString` conversion bug
 - Simplified internal behaviour of `{ AsyncDisposableStack, DisposableStack }.prototype.use`, [proposal-explicit-resource-management/143](https://github.com/tc39/proposal-explicit-resource-management/pull/143)
 - Added Opera Android 73 compat data mapping
